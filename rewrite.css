@@ -45,7 +45,7 @@ html, body {
     .nav {
       padding: 0.1rem; /* Adjust padding for mobile */
        /* Allow height to adjust on mobile */
-      min-height: 100vh; 
+      min-height: 93vh; 
       
     }
      
