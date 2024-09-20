@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bode Plot Generator</title>
+  <link rel="stylesheet" href="book.css">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> <!-- Plotly for plotting -->
+</head>
+<body>
+  <div class="container">
+    <h1>Bode Plot Generator</h1>
+    <div class="input-section">
+      <label for="numerator">Numerator Coefficients:</label>
+      <input type="text" id="numerator" placeholder="e.g. 1, 0.5, 2">
+
+      <label for="denominator">Denominator Coefficients:</label>
+      <input type="text" id="denominator" placeholder="e.g. 1, 2, 1">
+
+      <button onclick="plotBode()">Plot Bode</button>
+    </div>
+
+    <div id="plot"></div>
+
+    <!-- Results Section -->
+    <div id="results" class="results-section"></div>
+  </div>
+  
+  <script src="book.js"></script>
+</body>
+</html>

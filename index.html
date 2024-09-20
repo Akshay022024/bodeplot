@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bode Plot Generator</title>
+    <link rel="stylesheet" href="rewrite.css"> <!-- Link to your CSS file -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="book.js"></script>
+</head>
+<body>
+    <!-- Home -->
+    <section class="nav" id="head">
+        <div id="particles-js"></div>
+        <h3 class="span loader">
+            <span class="m">B</span><span class="m">O</span><span class="m">D</span><span class="m">E</span><span class="m">P</span><span class="m">L</span><span class="m">O</span><span class="m">T</span><span class="m">&nbsp;</span><span class="m">o</span><span class="m">f</span><span class="m">&nbsp;</span><span class="m">T</span><span class="m">R</span><span class="m">A</span><span class="m">N</span><span class="m">S</span><span class="m">F</span><span class="m">E</span><span class="m">R</span>&nbsp;<span class="m">F</span><span class="m">U</span><span class="m">N</span><span class="m">C</span><span class="m">T</span><span class="m">I</span><span class="m">O</span><span class="m">N</span>
+        </h3>
+        <h1>PYTHON</h1>
+        <div class="nav-container">
+            <a class="nav-tab" href="#tab-code">Code</a>
+            <a class="nav-tab" href="#tab-input">Generator</a>
+            <a class="nav-tab" href="#tab-theory">Theory</a>
+            <a class="nav-tab" href="#tab-queries">Meet Nyx!</a>
+            <a class="nav-tab" href="#tab-help">Connect</a>
+            <span class="nav-tab-slider"></span>
+        </div>
+    </section>
+
+    <script src="particles.js"></script>
+    <script src="app.js"></script>
+<!--code tab-->
+<main class="main">
+    <section class="slider" id="tab-code">
+      <h1>CODE</h1>
+      <div  class="container" id="code">
+        <div class="code-container animated-glow">
+          <div class="code-options">
+            <button id="python-btn" class="active" onclick="showCode('python')">Python</button>
+              <button id="js-btn" onclick="showCode('js')">JavaScript</button>
+          </div>
+          <div id="python-code" class="code-content">
+            <pre><code>
+  # Python Code for Bode Plot
+  # Import required libraries
+  import numpy as np
+  import matplotlib.pyplot as plt
+  from scipy import signal
+  
+  # Define system transfer function
+  numerator = [1, 0.5, 2]  # Numerator coefficients
+  denominator = [1, 2, 1]  # Denominator coefficients
+  system = signal.TransferFunction(numerator, denominator)
+  
+  # Generate frequency range
+  w, mag, phase = signal.bode(system)
+  
+  # Plot magnitude and phase
+  plt.figure()
+  plt.subplot(2, 1, 1)
+  plt.semilogx(w, mag)  # Bode magnitude plot
+  plt.title('Bode Plot')
+  plt.xlabel('Frequency [rad/s]')
+  plt.ylabel('Magnitude [dB]')
+  
+  plt.subplot(2, 1, 2)
+  plt.semilogx(w, phase)  # Bode phase plot
+  plt.xlabel('Frequency [rad/s]')
+  plt.ylabel('Phase [degrees]')
+  plt.show()
+  ..............................................................................
+                  </code></pre>
+              </div>
+              <div id="js-code" class="code-content">
+                  <pre><code>
+  // JavaScript Code for Bode Plot
+  // Define system transfer function
+  function plotBode() {
+      const numerator = [1, 0.5, 2]; // Numerator coefficients
+      const denominator = [1, 2, 1]; // Denominator coefficients
+  
+      // Frequency range for the plot
+      const w = [...Array(100).keys()].map(x => Math.pow(10, x / 20));
+  
+      // Placeholder for Magnitude and Phase calculations
+      const magnitude = w.map(freq => Math.abs(freq / 10));
+      const phase = w.map(freq => Math.atan(freq));
+  
+      // Plot the traces
+      const magTrace = {
+          x: w,
+          y: magnitude,
+          type: 'scatter',
+          name: 'Magnitude',
+          yaxis: 'y1',
+      };
+  
+      const phaseTrace = {
+          x: w,
+          y: phase,
+          type: 'scatter',
+          name: 'Phase',
+          yaxis: 'y2',
+      };
+  
+      const layout = {
+          grid: { rows: 2, columns: 1, pattern: 'independent' },
+          yaxis: { title: 'Magnitude (dB)', type: 'log' },
+          yaxis2: { title: 'Phase (degrees)', overlaying: 'y', side: 'right' },
+          xaxis: { title: 'Frequency (rad/s)', type: 'log' },
+          height: 500,
+          plot_bgcolor: '#1a1a1a',
+          paper_bgcolor: '#1a1a1a',
+          font: { color: '#fff' },
+      };
+  
+      Plotly.newPlot('plot', [magTrace, phaseTrace], layout);
+  }
+                </code></pre>
+            </div>
+        </div>
+    </div>
+  </section>
+<script src="book.js"></script>  
+
+<!--generator-->
+
+<section class="slider" id="tab-input">
+    
+  <div id="cont" class="contain">
+    <h1>Bode Plot Generator</h1>
+    <div class="input-section">
+      <label for="numerator">Numerator Coefficients:</label>
+      <input type="text" id="numerator" placeholder="e.g. 1, 0.5, 2">
+    
+      <label for="denominator">Denominator Coefficients:</label>
+      <input type="text" id="denominator" placeholder="e.g. 1, 2, 1">
+          
+      <button onclick="plotBode();openContainer();">Plot Bode</button>
+         
+    </div>
+          
+    <div id="plot"></div>
+      <button class="close-btn" onclick="closeContainer()">×</button>
+    <!-- Results Section -->
+    <div id="results" class="results-section"></div>
+ </div>
+
+<script src="book.js"></script>
+</section>
+
+<!--Theory-->
+
+<section class="slider" id="tab-theory">
+  <h1 style="margin-top: 40px;">THEORY</h1>
+  <section class="bode-plot-content" id="bode-plot-container">
+    <div class="content">
+    <h2>Introduction</h2>
+    <p>A Bode plot is a graphical method for understanding the frequency response of a linear, time-invariant system. It shows how the system's output changes in magnitude and phase as a function of frequency. Bode plots are widely used in electrical engineering, control systems, and signal processing to analyze system behavior, design filters, and ensure system stability.</p>
+
+    <h2>Algorithm</h2>
+    <P>
+            Step-1 : <strong>Find the Transfer Function:</strong> Determine the transfer function of the system, H(s), where s = jω.<br>
+            step-2 : <strong>Break Down the Transfer Function:</strong> Express the transfer function as a product of simpler components (constant gain, poles, zeros).<br>
+            Step-3 : <strong>Magnitude Plot:</strong>
+            <li style="text-align:left; color:#ff0266; ">Calculate the magnitude of each component.</li>
+            <li style="text-align:left;  color:#ff0266; ">Plot each component on a logarithmic frequency scale.</li>
+            <li style="text-align:left;  color:#ff0266; ">Combine the contributions to form the overall magnitude plot.</li>
+            <p>Step-4 :<strong>Phase Plot:</strong></p>
+            <li style="text-align:left;  color:#ff0266;  ">Calulate the phase shift for each component.</li>
+            <li style="text-align:left;  color:#ff0266;  ">Plot the phase on a logarithmic frequency scale.</li>
+            <li style="text-align:left; color:#ff0266;   ">Combine the contributions to form the overall phase plot.</li>
+            <p>step-5 : <strong>Verify Results:</strong>Ensure that the Bode plot accurately reflects the system's frequency response.</p>
+
+
+          </P>
+          <h2>Formulas</h2>
+          <p>The key formulas used in constructing Bode plots are:</p>
+          <li style="text-align: left;"><strong>Magnitude (in dB):</strong></li>
+          <div class="formula">
+            20 log<sub>10</sub> | H(jω) |
+          </div>
+          <li style="text-align: left;"><strong>Phase (in Degrees):</strong> The phase shift of the transfer function is given by:</li>
+          <div class="formula">
+            ∠H(jω) = tan<sup>-1</sup>(Imaginary Part / Real Part)
+          </div>
+
+      
+          <h2>Calculations</h2>
+         <p> To construct a Bode plot, you need to calculate the magnitude and phase at different frequencies:</p>
+         <div class="calculation">
+          <h3 >Example Calculation for a First-Order System</h3>
+          <p style=" color:#ff0266; ">For a transfer function H(s) = 1 / (s + 1):</p>
+          <li ><strong>At ω = 0.1 rad/s:</strong></li>
+      
+      <ul style="text-align: left;">
+        <li>Magnitude: 20 log<sub>10</sub> (1 / √(1 + (0.1)^2)) ≈ 0 dB</li>
+        <li>Phase: ∠H(j0.1) = -tan<sup>-1</sup>(0.1) ≈ -5.7°</li>
+      </ul>
+      <br>
+      <li ><strong>At ω = 1 rad/s:</strong></li>
+      <ul style="text-align: left;">
+        <li>Magnitude: 20 log<sub>10</sub> (1 / √(1 + (1)^2)) ≈ -3 dB</li>
+        <li>Phase: ∠H(j1) = -tan<sup>-1</sup>(1) ≈ -45°</li>
+    </ul>
+    <br>
+    <li ><strong>At ω = 10 rad/s:</strong></li>
+    <ul style="text-align: left;">
+        <li>Magnitude: 20 log<sub>10</sub> (1 / √(1 + (10)^2)) ≈ -20 dB</li>
+        <li>Phase: ∠H(j10) = -tan<sup>-1</sup>(10) ≈ -84.3°</li>
+    </ul>
+    </div>
+         
+    <h2>Advantages</h2>
+    <ul style="text-align: left;  color:#ff0266; ">
+      <li><strong>Visual Analysis:</strong> Provides a clear visual representation of a system's frequency response, making it easier to understand system behavior.</li>
+      <li><strong>Stability Assessment:</strong> Helps in determining the stability of control systems by examining gain margin and phase margin.</li>
+      <li><strong>Design and Tuning:</strong> Assists in designing and tuning control systems, filters, and amplifiers to meet specific performance criteria.</li>
+      <li><strong>Frequency Domain Insight:</strong> Offers insights into how a system responds to various frequencies, crucial for filter design and signal processing.</li>
+  </ul>
+       
+          
+  </section>
+</section>
+
+<!--nyx-->
+
+<section class="slider" id="tab-queries">  
+  
+  <div class="robot-container">
+    <div class="robot">
+        <!-- Robot parts -->
+        <div class="robot-head"></div>
+        <div class="robot-body"></div>
+        <div class="robot-arm left"></div>
+        <div class="robot-arm right"></div>
+        <div class="robot-leg left"></div>
+        <div class="robot-leg right"></div>
+    </div>
+    <div class="robot-text" id="robotText">Hello, my name is Nyx!</div>
+
+    <!-- User input section -->
+    <div class="user-input">
+        <input type="text" id="userInput" placeholder="Ask me something...">
+        <button id="replyBtn">Send</button>
+    </div>
+</div>
+<script src="rough.js"></script>
+  
+</section>
+
+<!--contact-->
+
+<!--connect-->
+
+<section class="slider" id="tab-help">
+  <h1 style="font-size:2.6rem;">  CONNECT </h1>
+  <section class="contact-us" id="contact-us">
+      <div class="contact-container">
+        <h2><b>Get in Touch</b></h2>
+        <p> you have any questions, feel free to reach out to me:</p>
+        <div class="contact-info">
+          <p>Email: <a href="mailto:akshaync17@gmail.com">akshaync17@gmail.com</a></p>
+          <!-- Add other contact information if needed -->
+          <p>Phone: <a href="tel:+1234567890">+91 9014901546</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/nandigam-akshay-0906b022b/" target="_blank">www.linkedin.com/in/nandigam-akshay-0906b022b/</a></p>
+        </div>
+        <button class="contact-btn" onclick="openContactForm()">Send a Message</button>
+      </div>
+      <div id="contact-form" class="contact-form">
+        <button class="close-btn" onclick="closeContactForm()">×</button>
+        <h3>Contact Form</h3>
+        <form action="/send-message" method="post">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        
+          <button type="submit">Submit</button>
+        </form>
+        
+      </div>
+    </section>  
+  </section>
+</main>
+
+    </body>
+    </html>
