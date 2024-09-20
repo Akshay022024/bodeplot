@@ -42,12 +42,13 @@ html, body {
       height:100vh; /* Allow height to adjust on mobile */
     }
   
-    .nav {
+     .nav{
       padding: 0.1rem; /* Adjust padding for mobile */
        /* Allow height to adjust on mobile */
-      height: 90vh; 
+      height: 93vh; 
       
     }
+    
      
     #head h1{
       font-size:2.5rem;
@@ -58,6 +59,7 @@ html, body {
     #head .nav-container{
       width:100%;
       height:80px;
+      
     
     }
     .nav h3.span {
@@ -142,18 +144,6 @@ html, body {
 
 
 
-  }
-@media only screen and (orientation: landscape) {
-
-    #head .nav-container .nav-tab {
-      font-size: 1.0rem; /* Responsive font size for tabs */
-    }
-    .nav{
-      padding: 0.1rem; /* Adjust padding for mobile */
-       /* Allow height to adjust on mobile */
-      height: 90vh; 
-      
-    }
   }
 /* Header and Navigation Text */
 .nav h1, .slider h1 {
