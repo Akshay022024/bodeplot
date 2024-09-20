@@ -143,6 +143,18 @@ html, body {
 
 
   }
+@media only screen and (orientation: landscape) {
+
+    #head .nav-container .nav-tab {
+      font-size: 1.0rem; /* Responsive font size for tabs */
+    }
+    .nav{
+      padding: 0.1rem; /* Adjust padding for mobile */
+       /* Allow height to adjust on mobile */
+      height: 90vh; 
+      
+    }
+  }
 /* Header and Navigation Text */
 .nav h1, .slider h1 {
     font-family: "Josefin Sans", sans-serif;
