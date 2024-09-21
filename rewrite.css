@@ -2,22 +2,22 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-x: hidden; 
     font-family: "Roboto", sans-serif;
    
    
   }
 
 * {
-  box-sizing: border-box; /* Includes padding and border in the width and height of elements */
+  box-sizing: border-box; 
 }
   /* Particles Background */
 #particles-js {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Ensure full viewport width */
-    height: 100vh; /* Ensure full viewport height */
+    width: 100%; 
+    height: 100vh; 
     background-color: #1e1f26;
   }
   /* Navigation and Slider */
@@ -26,7 +26,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Ensure full viewport height */
+    height: 100vh; 
     position: relative;
     background-color: #1e1f26;
     text-align: center;
@@ -39,12 +39,12 @@ html, body {
   /* Mobile View Adjustments */
 @media (max-width: 768px) {
     #particles-js {
-      height:100vh; /* Allow height to adjust on mobile */
+      height:100vh;
     }
   
      .nav{
-      padding: 0.1rem; /* Adjust padding for mobile */
-       /* Allow height to adjust on mobile */
+      padding: 0.1rem; 
+    
       height: 93vh; 
       
     }
@@ -54,7 +54,7 @@ html, body {
       font-size:2.5rem;
     }
     #head .nav-container .nav-tab {
-      font-size: 1.0rem; /* Responsive font size for tabs */
+      font-size: 1.0rem; 
     }
     #head .nav-container{
       width:100%;
@@ -179,7 +179,7 @@ h3.span {
     letter-spacing: 0.7em;
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    color: #faebd7; /* Changed from 'a' to a valid color */
+    color: #faebd7; 
     z-index: 4;
     text-align: center;
     margin-top: -10px;
@@ -764,7 +764,6 @@ h3.span {
 /* contact ussssssssssssssss  */
 
 
-/* contact us */
 /* Main Contact Us section */
 .contact-us {
   position: relative;
@@ -776,7 +775,7 @@ h3.span {
  
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1s ease-in-out;
-  border: 2px solid #03dac6; /* Main border color */
+  border: 2px solid #03dac6; 
   box-shadow: 0 0 2px #03dac6,
               0 0 2px #03dac6,
               0 0 2px #03dac6,
